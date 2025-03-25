@@ -1,0 +1,37 @@
+  <div class="col s12">
+    <div class="row">
+      <h2 id="result"></h2>
+    </div>
+    <div class="row">
+      <input type="button" class="btn waves-effect waves-light blue" id="start" value="Start Clock" />
+      <input type="button" class="btn waves-effect waves-light blue" id="stop" value="Stop Clock" />
+    </div>
+  </div>
+
+  <script>
+    let result = document.querySelector('#result');
+    let start = document.querySelector('#start');
+    let stop = document.querySelector('#stop');
+
+    console.log(start, stop)
+    
+    let timer;
+    
+    //print the current time to the dom
+    function printDate(){
+      result.innerHTML = new Date().toLocaleTimeString();
+    }
+    
+    function startTimer(){
+       //execute printDate() ever second
+       timer =  setInterval(printDate, 1000);
+    }
+
+    function stopTimer(){
+      clearInterval(timer); // stops the timer
+    }
+
+    start.addEventListener('click', startTimer);
+    stop.addEventListener('click', stopTimer);
+
+  </script>

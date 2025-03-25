@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">Bluetooth</span>
+     <div id="result">
+    
+     </div>
+     <input type="button" id="searchBtn" class="waves-effect waves-light btn blue darken-3" value="search">
+  </div>
+  
+</div>
+
+
+<script>
+
+  async function search(){
+    try{
+      let device = await navigator.bluetooth.requestDevice({"filters":[{"services":["alert_notification"]}]});
+      document.querySelector('#result').innerHTML = `
+        Name: ${device.name}<br>
+        ID: ${device.name}<br>
+        Connected: ${device.gatt.connected}<br>
+      `;
+    }catch{
+      alert('Paring Cancelled');
+    }
+  }
+
+  document.querySelector('#searchBtn').addEventListener('click', search);
+
+</script>

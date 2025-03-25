@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">Location</span>
+     <div id="result">
+    
+     </div>
+     <input type="button"  id="locateBtn" class="waves-effect waves-light btn blue darken-3" value="Get Location">
+  </div>
+</div>
+
+<script>
+
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+
+  function success(pos) {
+    var crd = pos.coords;
+    document.querySelector("#result").innerHTML = `
+      Your current position is: <br>
+      Latitude : ${crd.latitude} <br>
+      Longitude: ${crd.longitude} <br>
+      More or less ${crd.accuracy} meters.
+    `;
+  }
+
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+
+  function locate(){
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  }
+
+  document.querySelector('#locateBtn').addEventListener('click', locate);
+</script>

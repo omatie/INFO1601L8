@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">
+      Battery <span id="level"></span>
+    </span>
+     <div id="result">
+         <label> Level
+            <progress class="progress blue col s6"  id="batbar" max="1"></progress>
+          </level>
+          <br>
+          Status: <span id="state"></span>
+     </div>
+  </div>
+</div>
+
+<script>
+  async function main(){
+    let battery = await navigator.getBattery();
+    let batbar = document.querySelector('#batbar');
+    batbar.value = battery.level; 
+    document.querySelector('#level').innerHTML = (battery.level * 100)+'%';
+    document.querySelector('#state').innerHTML = battery.charging ? "Charging" : "Not Charging";
+  }
+
+  main();
+
+</script>

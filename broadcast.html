@@ -1,0 +1,48 @@
+<div class="card">
+  <form id="myform" class="card-content">
+      <span class="card-title">Broadcast Channel</span>
+      <input type="button" id="newTabBtn" class="waves-effect waves-light btn blue darken-3" value="Open Peer">
+      <div class="input-field col s12">
+        <textarea id="textarea1" class="materialize-textarea" disabled></textarea>
+      </div>
+
+      <div class="input-field blue-text darken-3 col s12">
+          <input id="message" type="text">
+          <label for="message" class="blue-text darken-3 ">Enter Message</label>
+      </div>
+    
+      <button type="submit" class="btn waves-effect waves-light blue darken-3">Send
+        <i class="material-icons right">send</i>
+      </button>
+  </form>       
+</div>
+
+<script>
+
+  const channel = new BroadcastChannel('my-channel');
+
+  function openTab(){
+    var redirectWindow = window.open('peer.html', '_blank');
+    redirectWindow.location;
+  }
+
+
+
+  channel.onmessage = function handleMessage(event){
+    document.querySelector('#textarea1').value+=`Peer 2: ${event.data}\n`;
+  }
+
+  function sendMessage(event){
+    event.preventDefault();
+    let messageInput = document.querySelector('#message');
+    let message = messageInput.value;
+    channel.postMessage(message);
+    document.querySelector('#textarea1').value+=`Peer 1: ${message}\n`;
+    messageInput.value = "";//empty text field
+  }
+
+
+  document.querySelector('#newTabBtn').addEventListener('click', openTab);
+  document.forms['myform'].addEventListener('submit', sendMessage);
+
+</script>

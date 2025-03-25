@@ -1,0 +1,63 @@
+
+html, body{
+  height:100%;
+}
+
+body{
+  display: flex;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+progress{
+  width: 200px;
+}
+
+article{
+  margin-top: 50px;
+  display:flex;
+  height: 100%;
+  flex-direction: row;
+}
+
+.card{
+  width: 400px;
+}
+
+#grid{
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: space-around;
+}
+
+aside, .card{
+  padding: 1em;
+}
+
+section{
+  width:100%;
+  flex-direction: column;
+  display: flex;
+  padding: 1em;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+}
+
+#textarea1{
+  background-color: gainsboro;
+  height: 200px;
+}
+
+h1{
+  font-size: 20px;
+}
