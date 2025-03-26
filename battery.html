@@ -20,6 +20,8 @@
     batbar.value = battery.level; 
     document.querySelector('#level').innerHTML = (battery.level * 100)+'%';
     document.querySelector('#state').innerHTML = battery.charging ? "Charging" : "Not Charging";
+    let battery_is_half = battery.level ===0.5? "Battery is half full" : "Battery is not half full";
+    console.log (battery_is_half)
   }
 
   main();
